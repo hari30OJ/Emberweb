@@ -1,5 +1,47 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#bs-navbar class="site-icon" type=(if inverse 'inverse') fluid=fluid collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
+  <div class="navbar-header">
+    {{navbar.toggle}}
+    <a class="navbar-brand" href="#" style="color:white;">
+      ibotta
+      </a>
+  </div>
+  {{#navbar.content}}
+    {{#navbar.nav as |nav|}}
+      {{#nav.item}}{{#nav.link-to "index"}}Home{{/nav.link-to}}{{/nav.item}}
+      {{#nav.item}}{{#nav.link-to "posts"}}Navbars{{/nav.link-to}}{{/nav.item}}
+      {{#nav.dropdown as |dd|}}
+        {{#dd.toggle}}Dropdown <span class="caret"></span>{{/dd.toggle}}
+        {{#dd.menu as |ddm|}}
+          {{#ddm.item}}{{#ddm.link-to "index"}}Home{{/ddm.link-to}}{{/ddm.item}}
+          {{#ddm.item}}{{#ddm.link-to "posts"}}Navbars{{/ddm.link-to}}{{/ddm.item}}
+        {{/dd.menu}}
+      {{/nav.dropdown}}
+    {{/navbar.nav}}
+  {{/navbar.content}}
+{{/bs-navbar}}
 
-{{outlet}}
+
+<div class="container">
+  <div class="menu">
+    {{#link-to "index"}}
+    <h1>
+      <em>SuperRentals</em>
+    </h1>
+    {{/link-to}}
+    <div class="links">
+      {{#link-to "about" class="menu-about"}} About {{/link-to}} {{#link-to "contact" class="menu-contact"}} Contact {{/link-to}}
+    </div>
+  </div>
+  <div class="body">
+    {{outlet}}
+  </div>
+</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        IBotta
+      </a>
+    </div>
+  </div>
+</nav>
