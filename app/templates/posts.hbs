@@ -1,7 +1,14 @@
-
-{{#each model as |post|}}
-    <h1> {{post.title}}</h1>
-    <p>{{post.body}}</p>
-    By: {{ post.user.name}}
-
-{{/each}}
+<div class="row">
+    {{#each model as |post index|}}
+    <div class="post-list col-md-12">
+        <div>
+            <em><strong>Title: </strong></em><strong>{{post.title}} </strong>
+        </div>
+        <em><strong>Description: </strong></em><p class="card-text">{{post.body}}</p>
+        <div class="pull-right">
+            By:
+            <strong>{{ post.user.name}}</strong>
+        </div>
+    </div>
+    {{/each}}
+</div>
